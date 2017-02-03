@@ -74,6 +74,14 @@ Bubble sort
 Max time taken to sort if elements are sorted in reverse order (O(n*n)) and min time (O(n)) when elements are already sorted.
 """
 def bubble_sort(_toBeSorted):
+    for i in range(len(_toBeSorted)):    
+        for j in range(0, len(_toBeSorted) - i - 1):
+            if(_toBeSorted[j] > _toBeSorted[j+1]):
+                _toBeSorted[j], _toBeSorted[j+1] = _toBeSorted[j+1], _toBeSorted[j];
+        
+    return _toBeSorted;
+
+def bubble_sort_opt(_toBeSorted):
     swapped = None;
     for i in range(len(_toBeSorted)):
         swapped = False;     

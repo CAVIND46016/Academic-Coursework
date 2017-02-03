@@ -23,8 +23,12 @@ b3 = sorting.bubble_sort(tmp)
 print("Bubble sort: {} secs".format(time.time() - s_t))
 
 s_t = time.time();
-b4 = sorting.merge_sort(tmp)
+b4 = sorting.bubble_sort_opt(tmp)
+print("Bubble sort (optimized): {} secs".format(time.time() - s_t))
+
+s_t = time.time();
+b5 = sorting.merge_sort(tmp)
 print("Merge sort: {} secs".format(time.time() - s_t))
 
-assert(b1 == b2 == b3 == b4)
-print("b1 == b2 == b3 == b4"); #Ensuring array sorting correctness
+assert(b1 == b2 == b3 == b4 == b5) #Ensuring array sorting correctness
+print("b1 == b2 == b3 == b4 == b5"); 

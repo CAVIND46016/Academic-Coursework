@@ -18,8 +18,6 @@ def insertion_sort(_toBeSorted):
             _toBeSorted[i + 1] = _toBeSorted[i];    
             i = i - 1;    
         _toBeSorted[i + 1] = key;
-    
-    return _toBeSorted;
 
 """
 Quick sort:
@@ -66,7 +64,6 @@ def quick_sort(_toBeSorted):
             quick_sort_run(_toBeSorted, _start, split_element - 1);
             quick_sort_run(_toBeSorted, split_element + 1, _end);
         
-        return _toBeSorted;
     return quick_sort_run(_toBeSorted, 0, len(_toBeSorted) - 1);
 
 """
@@ -78,8 +75,6 @@ def bubble_sort(_toBeSorted):
         for j in range(0, len(_toBeSorted) - i - 1):
             if(_toBeSorted[j] > _toBeSorted[j+1]):
                 _toBeSorted[j], _toBeSorted[j+1] = _toBeSorted[j+1], _toBeSorted[j];
-        
-    return _toBeSorted;
 
 def bubble_sort_opt(_toBeSorted):
     swapped = None;
@@ -92,9 +87,6 @@ def bubble_sort_opt(_toBeSorted):
         """optimized by stopping the algorithm if inner loop didn’t cause any swap."""       
         if(swapped == False):
             break;
-        
-    return _toBeSorted;
-
 
 def merge_sort(_toBeSorted):
     def merge(arr, l, m, r):
@@ -140,8 +132,18 @@ def merge_sort(_toBeSorted):
             merge_sort_run(arr, l, m)
             merge_sort_run(arr, m+1, r)
             merge(arr, l, m, r)
-        
-        return arr;
             
     return merge_sort_run(_toBeSorted, 0, len(_toBeSorted) - 1)
+
+def descendingOrder(_toBeSorted):
+    swapped = None;
+    for i in range(len(_toBeSorted)):
+        swapped = False;     
+        for j in range(0, len(_toBeSorted) - i - 1):
+            if(_toBeSorted[j] < _toBeSorted[j+1]):
+                _toBeSorted[j], _toBeSorted[j+1] = _toBeSorted[j+1], _toBeSorted[j];
+                swapped = True;
+        """optimized by stopping the algorithm if inner loop didn’t cause any swap."""       
+        if(swapped == False):
+            break;
  

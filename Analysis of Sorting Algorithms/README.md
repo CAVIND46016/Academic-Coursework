@@ -1,4 +1,4 @@
-(Tested on a Windows x64 system, 8gb RAM i5-6200U CPU @ 2.40 GHz.)
+(Tested on a Windows 10 x64 system, 8gb RAM i5-6200U CPU @ 2.40 GHz.)
 
 #Average case analysis: 
 Input ==> Randomly generated array of length 25000 elements <br />

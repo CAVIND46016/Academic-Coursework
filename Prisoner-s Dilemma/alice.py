@@ -1,7 +1,3 @@
-#Name:           Cavin Dsouza
-#Email:          dsouzac@indiana.edu
-#Python Version: Python 3.5.2
-
 import random
 
 class Alice:

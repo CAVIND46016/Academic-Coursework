@@ -1,3 +1,7 @@
+#Name:           Cavin Dsouza
+#Email:          dsouzac@indiana.edu
+#Python Version: Python 3.5.2
+
 import random
 
 class Alice:
@@ -18,8 +22,8 @@ class Alice:
 
     #Returns the action, either \BETRAY" or \SILENT". You may choose this in any way you please.
     def get_action(self):
-        if(len(self.opponentHistory) < 1):
-            return "BETRAY" if random.random() < 0.5 else "SILENT";
+        if(len(self.opponentHistory) == 0):
+            return "SILENT"; # Always co-operate on the first turn
         else:
             #***************************************************************************************
             #*    Title: Evolving strategies for an Iterated Prisoner's Dilemma tournament

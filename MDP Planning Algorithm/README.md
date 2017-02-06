@@ -2,7 +2,7 @@
 
 The task is to implement an MDP planning algorithm and test the implementation on a simple example found in test.py.
 
-The ChainMDP problem in q(1) has been solved using the value iteration algorithm, that utilizes Bellman equations.
+The ChainMDP problem has been solved using the value iteration algorithm, that utilizes Bellman equations.
 If there are 'n' possible states, then there are 'n' Bellman equations, one for each state. These 'n' equations contain 'n'
 unknowns – the utilities of the states, whose solution can be obtained by solving them simultaneously.
 The following pseudocode has been implemented in solver.py file.

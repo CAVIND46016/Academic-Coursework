@@ -1,5 +1,10 @@
 (Tested on a Windows 10 x64 system, 8gb RAM i5-6200U CPU @ 2.40 GHz.)
 
+Analysis.xlsx contains readings for all 3 cases for array sizes 2000, 3000, 5000, 7500, 10000 and 15000.<br />
+Check the .png images for graphical observations of time complexity.<br />
+
+Merge sort has almost similar time complexity irrespective of best, avg or worst case.<br />
+
 #Average case analysis: 
 Input ==> Randomly generated array of length 25000 elements <br />
 <br />
@@ -26,3 +31,4 @@ Quick sort: 0.1429133415222168 secs<br />
 Bubble sort: 127.06997394561768 secs<br />
 Bubble sort (optimized): 128.17605638504028 secs<br />
 Merge sort: 0.21707701683044434 secs<br />
+

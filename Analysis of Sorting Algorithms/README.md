@@ -14,6 +14,8 @@ Bubble sort: 90.29240274429321 secs<br />
 Bubble sort (optimized): 91.07437491416931 secs<br />
 Merge sort: 0.2461543083190918 secs<br />
 
+![alt text](https://github.com/CAVIND46016/Academic-Coursework/blob/master/Analysis%20of%20Sorting%20Algorithms/Average_case_graph.png)
+
 #Best case analysis:
 Input ==> Randomly generated sorted array of length 25000 elements <br />
 <br />
@@ -23,6 +25,8 @@ Bubble sort: 53.24405026435852 secs<br />
 Bubble sort (optimized): 0.004010677337646484 secs<br />
 Merge sort: 0.21661996841430664 secs<br />
 
+![alt text](https://github.com/CAVIND46016/Academic-Coursework/blob/master/Analysis%20of%20Sorting%20Algorithms/Best_case_graph.png)
+
 #Worst case analysis:
 Input ==> Randomly generated reverse sorted array of length 25000 elements <br />
 <br />
@@ -31,4 +35,6 @@ Quick sort: 0.1429133415222168 secs<br />
 Bubble sort: 127.06997394561768 secs<br />
 Bubble sort (optimized): 128.17605638504028 secs<br />
 Merge sort: 0.21707701683044434 secs<br />
+
+![alt text](https://github.com/CAVIND46016/Academic-Coursework/blob/master/Analysis%20of%20Sorting%20Algorithms/Worst_case_graph.png)
 

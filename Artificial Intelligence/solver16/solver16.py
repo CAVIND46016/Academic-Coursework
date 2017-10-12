@@ -1,7 +1,3 @@
-# Name: Melita Dsouza
-# Email: dsouzam@indiana.edu
-# Assignment 1
-
 from copy import deepcopy
 import sys
 

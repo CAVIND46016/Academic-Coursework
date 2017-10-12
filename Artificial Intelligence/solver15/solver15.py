@@ -52,7 +52,7 @@ class ShortSequence_Solver15:
                         tiles[i][j], tiles[i-1][j] = tiles[i-1][j], tiles[i][j];  
                         successor_states.append(deepcopy(tiles))
                         tiles[i][j], tiles[i-1][j] = tiles[i-1][j], tiles[i][j];
-                        move = "D" + str(self.r + 1); # sequence of moves string builder
+                        move = "U" + str(self.r + 1); # sequence of moves string builder
                         moves.append(move) # sequence of moves list
                     #move up by one tile
                         
@@ -61,7 +61,7 @@ class ShortSequence_Solver15:
                         tiles[i][j], tiles[i+1][j] = tiles[i+1][j], tiles[i][j]
                         successor_states.append(deepcopy(tiles))
                         tiles[i][j], tiles[i+1][j] = tiles[i+1][j], tiles[i][j]
-                        move = "U" + str(self.r + 1);
+                        move = "D" + str(self.r + 1);
                         moves.append(move)
                     #move down by one tile
                         
@@ -70,7 +70,7 @@ class ShortSequence_Solver15:
                         tiles[i][j], tiles[i][j-1] = tiles[i][j-1], tiles[i][j];  
                         successor_states.append(deepcopy(tiles))
                         tiles[i][j], tiles[i][j-1] = tiles[i][j-1], tiles[i][j];  
-                        move = "R" + str(self.c + 1);
+                        move = "L" + str(self.c + 1);
                         moves.append(move)
                     #move left by one tile
                         
@@ -79,7 +79,7 @@ class ShortSequence_Solver15:
                         tiles[i][j], tiles[i][j+1] = tiles[i][j+1], tiles[i][j]
                         successor_states.append(deepcopy(tiles))
                         tiles[i][j], tiles[i][j+1] = tiles[i][j+1], tiles[i][j]
-                        move = "L" + str(self.c + 1);
+                        move = "R" + str(self.c + 1);
                         moves.append(move)
                     #move right by one tile
 
@@ -163,9 +163,10 @@ class ShortSequence_Solver15:
         
         # https://stackoverflow.com/questions/10695139/sort-a-list-of-tuples-by-2nd-item-integer-value
         # next_promising_state is chosen based on min f_cost = g_cost + h_cost
-        next_promising_state = sorted(tmp, key=lambda x: x[2])[0][0]
+        sorted_tmp = sorted(tmp, key=lambda x: x[2]);
+        next_promising_state = sorted_tmp[0][0]
         explored_state.append(next_promising_state);
-        moves.append(sorted(tmp, key=lambda x: x[2])[0][1]);
+        moves.append(sorted_tmp[0][1]);
         # https://algorithmsinsight.wordpress.com/graph-theory-2/a-star-in-general/implementing-a-star-to-solve-n-puzzle/
         g_cost += 1;
         
@@ -181,12 +182,12 @@ class ShortSequence_Solver15:
                 output_str += "\n\nSEQUENCE OF MOVES:\n" +  " ".join(self.moves)
                 return output_str;
             else:
-                return ("Input puzzle is in goal state.")
+                return ("INPUT PUZZLE IS IN SOLVED STATE.")
         else:
             return ("PUZZLE NOT SOLVABLE");
 
 def main():
-    filename =  "puzzle.txt"
+    filename =  "puzzle_15.txt"
     s = ShortSequence_Solver15(filename);
     s.solve()
     print(str(s));

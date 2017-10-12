@@ -1,6 +1,9 @@
+# Name: Melita Dsouza
+# Email: dsouzam@indiana.edu
+# Assignment 1
+
 from copy import deepcopy
 import sys
-import time
 
 FINAL_CANONICAL_CONFIGURATION = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
 
@@ -237,6 +240,8 @@ class ShortSequence_Solver16:
     
     # A-star search finds the best promising state after each step based on min 'f'(g + h) value till the goal state is reached.    
     def solve_A_star(self, state, explored_state, moves, g_cost):
+        if(self.is_goal(state)):
+            return 0;
         # find row and column number of 'blank' tile.
         self.r, self.c = [(index, row.index(0)) for index, row in enumerate(state) if 0 in row][0]
         
@@ -266,18 +271,22 @@ class ShortSequence_Solver16:
         
     #Returns a string that represents the output of the program.
     def __str__(self):
-#         return ("\n".join(str(row) for row in self.explored_set[len(self.explored_set) - 1])) + "\n\nSEQUENCE OF MOVES:\n" +  (" ".join(self.moves))
         if(self.is_solvable):
-            return ("SEQUENCE OF MOVES:\n" +  " ".join(self.moves));
+            if(self.moves != []):
+                output_str = "";
+                output_str += "\n".join(str(row) for row in [self.initial_state] + self.explored_set)
+                output_str += "\n\nSEQUENCE OF MOVES:\n" +  " ".join(self.moves)
+                return output_str;
+            else:
+                return ("Input puzzle is in goal state.")
         else:
             return ("PUZZLE NOT SOLVABLE");
 
 def main():
     filename =  "puzzle.txt"
-    start_time = time.time();
     s = ShortSequence_Solver16(filename);
     s.solve()
-    print("Time taken: {} secs".format(time.time() - start_time) + "\n\n" + str(s));
+    print(str(s));
     
 if(__name__ == "__main__"):
     main();

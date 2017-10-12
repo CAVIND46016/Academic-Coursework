@@ -186,7 +186,7 @@ class ShortSequence_Solver15:
             return ("PUZZLE NOT SOLVABLE");
 
 def main():
-    filename =  "puzzle_15.txt"
+    filename =  "puzzle.txt"
     s = ShortSequence_Solver15(filename);
     s.solve()
     print(str(s));

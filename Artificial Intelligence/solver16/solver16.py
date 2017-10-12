@@ -274,7 +274,7 @@ class ShortSequence_Solver16:
                 output_str += "\n\nSEQUENCE OF MOVES:\n" +  " ".join(self.moves)
                 return output_str;
             else:
-                return ("Input puzzle is in goal state.")
+                return ("INPUT PUZZLE IS IN SOLVED STATE.")
         else:
             return ("PUZZLE NOT SOLVABLE");
 

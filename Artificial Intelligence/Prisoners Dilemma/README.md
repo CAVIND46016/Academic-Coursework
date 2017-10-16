@@ -1,4 +1,4 @@
-#Iterated prisoner's dilemma
+## Iterated prisoner's dilemma
 
 Alice and Bob (not their real names) are partners in a career as incompetent narcissistic petty criminals. Because Alice and Bob are incompetent, they are often caught by the police where-upon they are interviewed separately and can choose either to betray or remain silent.
 

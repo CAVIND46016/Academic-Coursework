@@ -7,7 +7,6 @@ import operator
 import time
 import re
 import sys
-from util import sendSMS
 
 # https://www.3pillarglobal.com/insights/document-classification-using-multinomial-naive-bayes-classifier
 class TweetClassification:
@@ -141,7 +140,6 @@ def main():
     tc.predict();
     text = "Time taken: {} secs".format(time.time() - s)
     print(text)
-    sendSMS(text)
     
 if(__name__ == "__main__"):
     main();

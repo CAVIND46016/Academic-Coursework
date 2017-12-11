@@ -1,0 +1,123 @@
+
+table{
+	border: 1px;color: #431900;border-style: solid;
+	border-collapse: collapse; 
+    border-spacing: 0;
+	margin-left:auto;
+	margin-right:auto;
+	}
+th{
+	border: 1px;color: #431900;border-style: solid;
+	}
+td{
+	border: 1px;color: #431900;border-style: solid;
+	}
+	
+header{
+	background: #ae761f;
+	padding-top: 2px;
+	padding-bottom:2px;
+}
+	
+body{
+	text-align:center;
+	/**background: #d5d1e0;**/
+	background: #d7bb8f;
+	font-family: "Helvetica Neue",Arial,sans-serif;
+}
+
+
+/**p{
+	color: #791e03
+}
+
+/**h1{
+	color: #791e03
+}
+
+a { color: #ff6600; transition: .5s; -moz-transition: .5s; -webkit-transition: .5s; -o-transition: .5s; font-family: 'Muli', sans-serif; }
+
+a:hover { text-decoration: underline }
+
+h1 a { font-family: 'Open Sans Condensed', sans-serif; font-size: 48px; color: #333; }
+
+h1 a:hover { color: #ff6600; text-decoration: none; }
+
+p { color: #333; font-family: 'Muli', sans-serif; margin-bottom: 15px; }**/
+
+a,
+
+a:visited { color: #93291b; text-decoration: none; }
+
+
+a:hover { text-decoration: underline }
+
+
+h1 { background: #ae761f; font-family: 'Enriqueta', arial, serif; color: #431900; line-height: 1.25; margin: 0 0 10px; font-size: 40px; font-weight: bold; }
+
+h2{
+	background: #ae761f;
+	color: #431900;
+}
+
+h3{
+	
+	color: #431900;
+}
+.center {color:#431900; text-align: center; list-style-position:inside; list-style:none;}
+
+.center1{
+	color:#431900; text-align: center; list-style-position:inside;
+	}
+
+p { color: #431900; font-family: "Helvetica Neue",Arial,sans-serif; font-size: 16px; font-weight: 300; line-height: 1.5625; margin-bottom: 15px; }
+
+
+
+.container {
+	text-align:center;
+    position: relative;
+    width: 50%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.image {
+  margin-left:auto;
+  margin-right: auto;
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+
+
+
+

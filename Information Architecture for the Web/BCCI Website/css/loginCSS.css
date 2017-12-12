@@ -1,0 +1,17 @@
+body{
+	width: 100%;
+
+}
+button{
+	background-color:#900;
+	color:white;
+}
+.form-container{
+	border: 0px solid;
+	padding: 50px 60px;
+	margin-top: 5vh;
+	-webkit-box-shadow: 1px 13px 25px 14px rgba(0,0,0,0.35);
+    -moz-box-shadow: 1px 13px 25px 14px rgba(0,0,0,0.35);
+    box-shadow: 1px 13px 25px 14px rgba(0,0,0,0.35);
+}
+

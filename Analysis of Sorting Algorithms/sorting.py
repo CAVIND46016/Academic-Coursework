@@ -1,92 +1,98 @@
+"""
+References:
+http://www.geeksforgeeks.org/fundamentals-of-algorithms/#SearchingandSorting
+Algorithm Design and Analysis CLRS
+"""
 import random
 
-# References:
-# http://www.geeksforgeeks.org/fundamentals-of-algorithms/#SearchingandSorting
-# Algorithm Design and Analysis CLRS
+def insertion_sort(arr):
+    """
+    Insertion sort (Time complexity = O(n*n))
+    Max time taken to sort if elements are sorted in reverse order and 
+    min time when elements are already sorted.
+    Insertion sort is used when number of elements is small. 
+    It can also be useful when input array is almost sorted, 
+    only few elements are misplaced in complete big array.
+    """
+    for j in range(1, len(arr)):
+        key = arr[j]
+        i = j - 1
+        while i >= 0 and arr[i] > key:
+            arr[i + 1] = arr[i]    
+            i = i - 1   
+        arr[i + 1] = key
 
-"""
-Insertion sort (Time complexity = O(n*n))
-Max time taken to sort if elements are sorted in reverse order and min time when elements are already sorted.
-Insertion sort is used when number of elements is small. 
-It can also be useful when input array is almost sorted, only few elements are misplaced in complete big array.
-"""
-def insertion_sort(_toBeSorted):
-    for j in range(1, len(_toBeSorted)):
-        key = _toBeSorted[j];
-        i = j - 1;
-        while(i >= 0 and _toBeSorted[i] > key):
-            _toBeSorted[i + 1] = _toBeSorted[i];    
-            i = i - 1;    
-        _toBeSorted[i + 1] = key;
-
-"""
-Quick sort:
-Best = Average = O(n*log(n)), Worst = O(n*n)
-"""
-def quick_sort(_toBeSorted):
-    def quick_sort_run(_toBeSorted, _start, _end):
-        def partition_fixed(_toBeSorted, _start, _end):
-            pivot = _toBeSorted[_start];
+def quick_sort(arr):
+    """
+    Quick sort:
+    Best = Average = O(n*log(n)), Worst = O(n*n)
+    """
+    def quick_sort_run(arr, _start, _end):
+        def partition_fixed(arr, _start, _end):
+            pivot = arr[_start]
             
-            i = _start + 1;
-            j = _end;
+            i = _start + 1
+            j = _end
             
-            loop_terminates = False;
+            loop_terminates = False
             while not loop_terminates:
-                while(i <= j and _toBeSorted[i] <= pivot):
-                    i = i + 1;
-                while(_toBeSorted[j] >= pivot and j >= i):
-                    j = j - 1;
+                while i <= j and arr[i] <= pivot:
+                    i = i + 1
+                while arr[j] >= pivot and j >= i:
+                    j = j - 1
                 if j < i:
-                    loop_terminates = True;
+                    loop_terminates = True
                 else:
-                    temp = _toBeSorted[i];
-                    _toBeSorted[i] = _toBeSorted[j];
-                    _toBeSorted[j] = temp;
+                    temp = arr[i]
+                    arr[i] = arr[j]
+                    arr[j] = temp
         
-            temp = _toBeSorted[_start];
-            _toBeSorted[_start] = _toBeSorted[j];
-            _toBeSorted[j] = temp;
+            temp = arr[_start]
+            arr[_start] = arr[j]
+            arr[j] = temp
             
-            return j;
+            return j
         
-        def partition_randomized(_toBeSorted, _start, _end):
-            i = random.randrange(_start, _end);
+        def partition_randomized(arr, _start, _end):
+            i = random.randrange(_start, _end)
             
-            temp = _toBeSorted[_start];
-            _toBeSorted[_start] = _toBeSorted[i];
-            _toBeSorted[i] = temp;
+            temp = arr[_start]
+            arr[_start] = arr[i]
+            arr[i] = temp
             
-            return partition_fixed(_toBeSorted, _start, _end);
+            return partition_fixed(arr, _start, _end)
         
-        if (_start < _end):
-            split_element = partition_randomized(_toBeSorted, _start, _end);
-            quick_sort_run(_toBeSorted, _start, split_element - 1);
-            quick_sort_run(_toBeSorted, split_element + 1, _end);
+        if _start < _end:
+            split_element = partition_randomized(arr, _start, _end)
+            quick_sort_run(arr, _start, split_element - 1)
+            quick_sort_run(arr, split_element + 1, _end)
         
-    return quick_sort_run(_toBeSorted, 0, len(_toBeSorted) - 1);
+    return quick_sort_run(arr, 0, len(arr) - 1)
 
-"""
-Bubble sort
-Max time taken to sort if elements are sorted in reverse order (O(n*n)) and min time (O(n)) when elements are already sorted.
-"""
-def bubble_sort(_toBeSorted):
-    for i in range(len(_toBeSorted)):    
-        for j in range(0, len(_toBeSorted) - i - 1):
-            if(_toBeSorted[j] > _toBeSorted[j+1]):
-                _toBeSorted[j], _toBeSorted[j+1] = _toBeSorted[j+1], _toBeSorted[j];
+def bubble_sort(arr):
+    """
+    Bubble sort
+    Max time taken to sort if elements are sorted in reverse order (O(n*n)) 
+    and min time (O(n)) when elements are already sorted.
+    """
+    for i in range(len(arr)):    
+        for j in range(0, len(arr) - i - 1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
 
-def bubble_sort_opt(_toBeSorted):
-    swapped = None;
-    for i in range(len(_toBeSorted)):
-        swapped = False;     
-        for j in range(0, len(_toBeSorted) - i - 1):
-            if(_toBeSorted[j] > _toBeSorted[j+1]):
-                _toBeSorted[j], _toBeSorted[j+1] = _toBeSorted[j+1], _toBeSorted[j];
-                swapped = True;
-        """optimized by stopping the algorithm if inner loop didn’t cause any swap."""       
-        if(swapped == False):
-            break;
+def bubble_sort_opt(arr):
+    """
+    optimized by stopping the algorithm if inner loop didn’t cause any swap. 
+    """
+    swapped = None
+    for i in range(len(arr)):
+        swapped = False
+        for j in range(0, len(arr) - i - 1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True     
+        if swapped == False:
+            break
 
 def merge_sort(_toBeSorted):
     def merge(arr, l, m, r):
@@ -96,18 +102,18 @@ def merge_sort(_toBeSorted):
         L = [0] * (n1)
         R = [0] * (n2)
     
-        for i in range(0 , n1):
+        for i in range(0, n1):
             L[i] = arr[l + i]
      
-        for j in range(0 , n2):
+        for j in range(0, n2):
             R[j] = arr[m + 1 + j]
     
         i = 0     # Initial index of first subarray
         j = 0     # Initial index of second subarray
         k = l     # Initial index of merged subarray
      
-        while(i < n1 and j < n2):
-            if(L[i] <= R[j]):
+        while i < n1 and j < n2:
+            if L[i] <= R[j]:
                 arr[k] = L[i]
                 i += 1
             else:
@@ -115,18 +121,18 @@ def merge_sort(_toBeSorted):
                 j += 1
             k += 1
     
-        while(i < n1):
+        while i < n1:
             arr[k] = L[i]
             i += 1
             k += 1
      
-        while(j < n2):
+        while j < n2:
             arr[k] = R[j]
             j += 1
             k += 1
             
     def merge_sort_run(arr, l, r):
-        if(l < r):
+        if l < r:
             m = (l+(r-1)) // 2
      
             merge_sort_run(arr, l, m)
@@ -135,15 +141,18 @@ def merge_sort(_toBeSorted):
             
     return merge_sort_run(_toBeSorted, 0, len(_toBeSorted) - 1)
 
-def descendingOrder(_toBeSorted):
-    swapped = None;
-    for i in range(len(_toBeSorted)):
-        swapped = False;     
-        for j in range(0, len(_toBeSorted) - i - 1):
-            if(_toBeSorted[j] < _toBeSorted[j+1]):
-                _toBeSorted[j], _toBeSorted[j+1] = _toBeSorted[j+1], _toBeSorted[j];
-                swapped = True;
-        """optimized by stopping the algorithm if inner loop didn’t cause any swap."""       
-        if(swapped == False):
-            break;
+def descendingOrder(arr):
+    """
+    optimized by stopping the algorithm if inner loop didn’t cause any swap.
+    """ 
+    swapped = None
+    for i in range(len(arr)):
+        swapped = False     
+        for j in range(0, len(arr) - i - 1):
+            if arr[j] < arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+                swapped = True
+      
+        if swapped == False:
+            break
  

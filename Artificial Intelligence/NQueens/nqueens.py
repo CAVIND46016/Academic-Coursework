@@ -5,9 +5,9 @@ import time
 def count_on_row(board, row):
     """
     Count # of pieces in given row
-    :param board: 
-    :param row: 
-    :return: 
+    :param board:
+    :param row:
+    :return:
     """
 
     return sum(board[row])
@@ -16,9 +16,9 @@ def count_on_row(board, row):
 def count_on_col(board, col):
     """
     Count # of pieces in given column
-    :param board: 
-    :param col: 
-    :return: 
+    :param board:
+    :param col:
+    :return:
     """
 
     return sum([row[col] for row in board])
@@ -27,8 +27,8 @@ def count_on_col(board, col):
 def count_pieces(board):
     """
     Count total # of pieces on board
-    :param board: 
-    :return: 
+    :param board:
+    :return:
     """
 
     return sum([sum(row) for row in board])
@@ -37,8 +37,8 @@ def count_pieces(board):
 def printable_board(board):
     """
     Return a string with the board rendered in a human-friendly format
-    :param board: 
-    :return: 
+    :param board:
+    :return:
     """
 
     text = ""
@@ -61,20 +61,30 @@ def printable_board(board):
 def add_piece(board, row, col):
     """
     Add a piece to the board at the given position, and return a new board (doesn't change original)
-    :param board: 
-    :param row: 
-    :param col: 
-    :return: 
+    :param board:
+    :param row:
+    :param col:
+    :return:
     """
 
-    return board[0:row] + [board[row][0:col] + [1, ] + board[row][col + 1:]] + board[row + 1:]
+    return (
+        board[0:row]
+        + [
+            board[row][0:col]
+            + [
+                1,
+            ]
+            + board[row][col + 1 :]
+        ]
+        + board[row + 1 :]
+    )
 
 
 def successors2(board):
     """
     Retrieve a list of the successor states for a given board configuration.
-    :param board: 
-    :return: 
+    :param board:
+    :return:
     """
 
     successor_list = []
@@ -93,11 +103,12 @@ def successors2(board):
 
 def validate(board, row, col):
     """
-    to validate that given a queen, there is no other queen on its upper or lower diagonal conflicting with it.
-    :param board: 
-    :param row: 
-    :param col: 
-    :return: 
+    to validate that given a queen, there is no other queen on its
+    upper or lower diagonal conflicting with it.
+    :param board:
+    :param row:
+    :param col:
+    :return:
     """
 
     for r in range(row + 1, N):
@@ -110,9 +121,11 @@ def validate(board, row, col):
 
 # check if board is a goal state
 def is_goal(board):
-    if (count_pieces(board) == N and
-        all([count_on_row(board, r) <= 1 for r in range(N)]) and
-        all([count_on_col(board, c) <= 1 for c in range(N)])):
+    if (
+        count_pieces(board) == N
+        and all([count_on_row(board, r) <= 1 for r in range(N)])
+        and all([count_on_col(board, c) <= 1 for c in range(N)])
+    ):
         if type_ == "nrook":
             return True
         else:
@@ -129,8 +142,8 @@ def is_goal(board):
 def solve(board):
     """
     Solve n-rooks!
-    :param board: 
-    :return: 
+    :param board:
+    :return:
     """
 
     fringe = [board]
@@ -160,8 +173,15 @@ else:
 # The board is stored as a list-of-lists. Each inner list is a row of the board.
 # A zero in a given square indicates no piece, and a 1 indicates a piece.
 initial_board = [[0] * N] * N
-print("Starting from initial board:\n" + printable_board(initial_board) + "\n\nLooking for solution...\n")
+print(
+    "Starting from initial board:\n"
+    + printable_board(initial_board)
+    + "\n\nLooking for solution...\n"
+)
 s = time.time()
 solution = solve(initial_board)
-print(printable_board(str(solution)) + "\n" + "{} secs".format(
-    time.time() - s) if solution else "Sorry, no solution found. :(")
+print(
+    printable_board(str(solution)) + "\n" + "{} secs".format(time.time() - s)
+    if solution
+    else "Sorry, no solution found. :("
+)

@@ -12,7 +12,7 @@ import math
 
 
 def yaml_loader():
-    with open("sample-input.yaml", 'r') as yaml_input_file:
+    with open("sample-input.yaml", "r") as yaml_input_file:
         try:
             data = yaml.load(yaml_input_file, Loader=yaml.FullLoader)
         except yaml.YAMLError as exc:
@@ -35,11 +35,11 @@ def euclidean_distance(a, b):
 def main():
     data = yaml_loader()
 
-    dict_cities = data.get('cities')
-    highways = data.get('highways')
+    dict_cities = data.get("cities")
+    highways = data.get("highways")
 
-    start_state = data.get('start')
-    goal_state = data.get('end')
+    start_state = data.get("start")
+    goal_state = data.get("end")
     frontier = [start_state]
     # f = g + h = 0 for the initial state.
     f_cost = [0]
@@ -61,7 +61,6 @@ def main():
 
             for loc1, loc2 in highways:
                 if loc1 == frontier[0] or loc2 == frontier[0]:
-
                     if loc1 == frontier[0]:
                         g_tmp = g_cost[0] + euclidean_distance(dict_cities[loc1], dict_cities[loc2])
                         h_tmp = euclidean_distance(dict_cities[loc2], dict_cities[goal_state])

@@ -1,11 +1,6 @@
 from copy import deepcopy
 
-FINAL_CANONICAL_CONFIGURATION = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12],
-    [13, 14, 15, 0]
-]
+FINAL_CANONICAL_CONFIGURATION = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 0]]
 
 
 class ShortSequenceSolver15:
@@ -35,11 +30,7 @@ class ShortSequenceSolver15:
 
         with open(filename, "r") as file_handle:
             self.initial_state = [
-                [
-                    int(j) for j in i
-                ] for i in [
-                    line.split() for line in file_handle
-                ]
+                [int(j) for j in i] for i in [line.split() for line in file_handle]
             ]
 
         self.is_solvable = self.is_puzzle_solvable(self.initial_state)
@@ -195,12 +186,7 @@ class ShortSequenceSolver15:
         """
 
         if self.is_solvable:
-            return self.solve_a_star(
-                self.initial_state,
-                self.explored_set,
-                self.moves,
-                g_cost=1
-            )
+            return self.solve_a_star(self.initial_state, self.explored_set, self.moves, g_cost=1)
 
     def solve_a_star(self, state, explored_state, moves, g_cost):
         """
@@ -249,7 +235,9 @@ class ShortSequenceSolver15:
         if self.is_solvable:
             if self.moves:
                 output_str = ""
-                output_str += "\n".join(str(row) for row in [self.initial_state] + self.explored_set)
+                output_str += "\n".join(
+                    str(row) for row in [self.initial_state] + self.explored_set
+                )
                 output_str += "\n\nSEQUENCE OF MOVES:\n" + " ".join(self.moves)
                 return output_str
 

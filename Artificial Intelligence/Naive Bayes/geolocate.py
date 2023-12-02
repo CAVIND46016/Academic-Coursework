@@ -13,13 +13,7 @@ import nltk
 
 
 class TweetClassification:
-    def __init__(
-        self,
-        train_file,
-        test_file,
-        output_file,
-        alpha
-    ):
+    def __init__(self, train_file, test_file, output_file, alpha):
         """
         Parameterized constructor reads training and test file.
         :param train_file:
@@ -48,7 +42,7 @@ class TweetClassification:
             "amp",
             "click",
             "see",
-            "great"
+            "great",
         ]
         self.tweet_lists = self.words_all_documents()
         self.unique_tweet_lists = list(set(self.tweet_lists))
@@ -102,12 +96,9 @@ class TweetClassification:
                 n_word = 0
             else:
                 n_word = prob[key]
-            prob[key] = (
-                            n_word + self.alpha
-                        ) / \
-                        (
-                            len(outcome) + self.alpha * len(self.unique_tweet_lists)
-                        )
+            prob[key] = (n_word + self.alpha) / (
+                len(outcome) + self.alpha * len(self.unique_tweet_lists)
+            )
         return prob
 
     def predict(self):
@@ -121,13 +112,9 @@ class TweetClassification:
 
             likelihoods = {}
             for i in self.classes:
-                txt = " ".join(
-                    self.train_df[self.train_df["location"] == i]["tweet"].values
-                )
+                txt = " ".join(self.train_df[self.train_df["location"] == i]["tweet"].values)
                 feature = self.feature_extraction(txt)
-                likelihoods[i] = self.conditional_probabilities(
-                    feature, tweet_list
-                )
+                likelihoods[i] = self.conditional_probabilities(feature, tweet_list)
 
             if print_top_five:
                 for key, val in likelihoods.items():
@@ -171,12 +158,7 @@ def main():
     output_file = "output_file.txt"
 
     alpha = 1  # Smoothing parameter: alpha = 1 for Laplace smoothing
-    TweetClassification(
-        train_file,
-        test_file,
-        output_file,
-        alpha
-    ).predict()
+    TweetClassification(train_file, test_file, output_file, alpha).predict()
     text = f"Time taken: {time.time() - start_time} secs"
     print(text)
 
